@@ -35,7 +35,8 @@ MAFFT's github can be found here: [Github](https://github.com/GSLBiotech/mafft).
 ```bash
 cd Ebola_Virus*
 ```
-3) Untar the TGZ file:
+3) Drag the downloaded TGZ file into your Ebola_Virus* directory so VSCode can use it. 
+4) Untar the TGZ file:
 ```bash
 tar xfvz mafft-7.526-linux.tgz
 ```
