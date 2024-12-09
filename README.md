@@ -25,6 +25,26 @@ This should create a FASTA file:
 Now that we have our FASTA file ready to be used, we can create MSAs using the software tools.
 
 ### 1. MAFFT
+MAFFT's paper can be found here: [Paper](https://academic.oup.com/nar/article/30/14/3059/2904316).
+MAFFT's github can be found here: [Github](https://github.com/GSLBiotech/mafft).
+#### a) Installation
+1) You will need to download the MAFFT version 7 from their [website](https://mafft.cbrc.jp/alignment/software/linuxportable.html). It should look like this:
+![3](https://github.com/user-attachments/assets/dad2b0b2-aba1-4dfd-b6e9-8aa70454bdf6)
+
+2) Then you can go to your terminal in VSCode, and go into the directory that has your FASTA file:
+```bash
+cd Ebola_Virus*
+```
+3) Untar the TGZ file:
+```bash
+tar xfvz mafft-7.526-linux.tgz
+```
+It will then give you a directory that looks like this: 
+![Screenshot 2024-12-09 172031](https://github.com/user-attachments/assets/22f4045c-cf25-4395-9ab9-96fc505fd835)
+
+MAFFT is now ready to be used!
+
+#### b) Usage
 
 
 
