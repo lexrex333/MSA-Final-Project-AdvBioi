@@ -21,4 +21,14 @@ cat Bundibugyo.fasta Reston.fasta Sudan.fasta Tai_Forest.fasta Zaire.fasta > Ebo
 This should create a FASTA file:
 ![2](https://github.com/user-attachments/assets/e7e17e9b-5747-41f9-bf33-9a43502c5170)
 
+## Step 2: Using the MSA Software Tools
+Now that we have our FASTA file ready to be used, we can create MSAs using the software tools.
+
+### 1. MAFFT
+
+
+
+
+
+
 
