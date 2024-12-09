@@ -5,6 +5,7 @@ Welcome! This is a walkthrough of benchmarking 4 different multiple sequence ali
 
 This was all done using VSCode and a remote explorer. 
 
-##Step 1: Preparing the FASTA Files
+## Step 1: Preparing the FASTA Files
 We need to make sure that our directory has the FASTA files we want to use. You will have to make a directory, and then insert each of the 5 Ebola FASTA files in this directory. I did this manually by opening my file explorer and dragging the downloaded FASTA files into my VSCode. It should look like this:
+
 ![1](https://github.com/user-attachments/assets/dcb683fa-1090-4a6b-9e04-5a7eac901779)
