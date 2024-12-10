@@ -479,6 +479,220 @@ Alistat is a software tool that will allow us to analyze each of the MSA's creat
 It creates equations using the idea that there are (m) sequences and (n) sites. If you are further interested in the equations and how it works, you can check out the [paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC7671350/) and the [github](https://github.com/thomaskf/AliStat). 
 
 #### Installing Alistat
+1) Download the tar.gz file from the [website](https://github.com/thomaskf/AliStat/releases).
+
+![image](https://github.com/user-attachments/assets/a73be060-0e84-4e53-8621-719f0940f582)
+
+2) I manually added the file into VSCode and then extracted the file:
+```bash
+tar -zxvf /home/aavalos4/Ebola_Virus_Bioi_500/AliStat-1.15-Linux.tar.gz
+```
+It should output something like this:
+
+![image](https://github.com/user-attachments/assets/135fcbf0-b7a7-4c08-a487-80be88466fe4)
+
+3) Now, head into the directory of Alistat and go into the bin:
+
+![image](https://github.com/user-attachments/assets/1fb7a94f-a9b4-425b-bfb0-1476fe863b79)
+
+4) Make sure Alistat is working by putting in:
+```bash
+./alistat
+```
+It should output:
+
+![image](https://github.com/user-attachments/assets/eed68969-361c-4b15-a028-d1d8ed6c93ae)
+
+5) Run a practice test with a given example Alistat gives:
+```bash
+./alistat /home/aavalos4/Ebola_Virus_Bioi_500/AliStat-1.15-Linux/examples/test.fas 1 > alioutput_practice2.txt
+```
+The "1" stands for Single nucleotides - you will have to use a different number if this isn't the case, such as di-nucleotides or amino acids. 
+
+Also, the last part (> alioutput_practice2.txt) is optional. Without it, it will still give you a summary.txt as output, but I just did it anyway to make sure that it ran all the way. 
+
+Summary.txt will return:
+
+![image](https://github.com/user-attachments/assets/3669da85-2629-40d3-8578-b6fca04172f8)
+
+Alioutput_practice2.txt will return:
+
+![image](https://github.com/user-attachments/assets/c99c0e91-0166-46a0-b134-a52e0d51a38c)
+
+(Also keep in mind, Alistat will ALWAYS return a file called (Summary.txt) so after every run, make sure to change the name so it doesn't overrun the file.)
+
+#### Running Alistat on the 4 MSA Software Tools
+
+1) MAFFT
+```bash
+./alistat /home/aavalos4/Ebola_Virus_Bioi_500/MAFFT_output/Ebola_align_Mafft_global_1000.aln 1 > MAFFT_ali.txt
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/0a872a04-6321-4686-876d-84b5d8b9a120)
+
+2) Halign3
+```bash
+./alistat /home/aavalos4/Ebola_Virus_Bioi_500/Halign3_output/Ebola_Halign3.fasta.aln 1 > Halign3_ali.txt
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/6a5f8e0f-26db-4fcb-a9f7-0b113e852a27)
+
+3) MUSCLE
+```bash
+./alistat /home/aavalos4/Ebola_Virus_Bioi_500/MUSCLE_output/Ebola_align_MUSCLE.fasta 1 > MUSCLE_ali.txt
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/51be2c92-60a6-4702-b974-d0ad7d71e211)
+
+4) ClustalOmega
+```bash
+./alistat /home/aavalos4/Ebola_Virus_Bioi_500/ClustalOmega_output/Ebola_align_ClustalOmega.aln 1 > ClustalOmega_ali.txt
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/c66ada1b-a4ea-4e47-87c8-56380df36b40)
+
+#### Organize Data from Alistat Outputs
+1) I made an excel sheet with all the information given by Alistat output.
+
+![image](https://github.com/user-attachments/assets/318b5f88-c0cb-44d1-8c56-ddfecf859958)
+
+2) I downloaded it as a CSV file and manually moved it to VSCode. It should look like this:
+
+![image](https://github.com/user-attachments/assets/76b1f2ba-842f-4240-8179-84ae8df326cb)
+
+Make sure to put quotations around all the words (like the picture above) so you don't get an error. 
+
+3) I made a new python file in VSCode.
+
+Using pandas and matplotlib again, also calling the CSV file:
+```bash
+#import what we need to make the plots
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#reading the excel sheet (changed into CSV) I made of all the numbers of alistat output
+data = pd.read_csv('/home/aavalos4/Ebola_Virus_Bioi_500/Alistat_software_compare.csv') 
+```
+
+I decided to make plots for 3 of the analyses Alistat made:
+   1) Completeness Score: How complete the alignment is.
+   2) Sequence Completeness Score: How complete the sequences are.
+   3) Pairs of Sequences Completeness Score: How many homologous pairs in sequences i and j.
+
+(For the benchmarking project, I don't think it was necessary to do number 3, but since I did it, I will put it in here as well.) 
+
+1. Completeness Score
+```bash
+#making a BAR CHART for overall completeness
+
+#fixing figure size
+plt.figure(figsize = (8,5))
+
+#making bars different colors so its not bland
+colors = ['blue', 'orange', 'green', 'purple']
+#getting the data we want in the plot
+plt.bar(data['Tool'], data['Completeness (C) score for the alignment (Ca)'], color = colors)
+
+#making plot title
+plt.title('Alignment Completeness (Ca) Across Tools')
+#making y axis label
+plt.ylabel('Completeness Score (Ca)')
+#making x axis label
+plt.xlabel('Tool')
+#making a more zoomed in version
+plt.ylim(0.80,1)
+#rotating the tool names to be able to read them better
+plt.xticks(rotation = 45)
+#organizes the plot better so things aren't overlapping in the space it has
+plt.tight_layout()
+#to save plot
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/Zoomed_Overall_Completeness_Plot.png', dpi =300)
+#showing the plot
+plt.show()
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/194e7886-9db3-49c5-811a-c2fcc20ce96e)
+
+2. Sequence Completeness Score
+```bash
+#making a LINE PLOT for sequence completeness
+
+#making figure size
+plt.figure(figsize=(8,5))
+#getting data we want to use and how we want to put it into plot
+plt.plot(data['Tool'], data['(Cr_max) Maximum C-score for individual sequences'], label = 'Cr_max', marker= 'o')
+plt.plot(data['Tool'], data['(Cr_min) Minimum C-score for individual sequences'], label = 'Cr_min', marker= 'o')
+#making a title
+plt.title('Sequence Completeness Scores')
+#making a y-axis name
+plt.ylabel('Sequence Completeness Score')
+#making a x-axis name
+plt.xlabel('Tool')
+#making it so it covers 0 to 1; unzoomed version
+#plt.ylim(0,1)
+#need a legend to differentiate the colors on plot
+plt.legend()
+#so names don't look ugly and they aren't cut off
+plt.xticks(rotation=45)
+#making everything pretty with no overlaps
+plt.tight_layout()
+#saving figure for future use in presentation
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/Sequence_Completeness_Plot.png', dpi =300)
+#showing plot
+plt.show()
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/790afab9-92a8-4851-8fcf-31195af9826b)
+
+3. Pairwise Sequence Completeness
+```bash
+#making a SCATTER PLOT for pairwise completeness scores
+
+#error on column names
+#print(data.columns)
+
+#making the figure size
+plt.figure(figsize=(8,5))
+#getting info for plot and how to incorporate it in
+plt.scatter(data['Tool'], data['(Cij_max, i!=j) Maximum C-score for pairs of sequences'], label='Cij_max', color='blue')
+plt.scatter(data['Tool'], data['(Cij_min, i!=j) Minimum C-score for pairs of sequences '], label='Cij_min', color='red')
+#making a title
+plt.title('Pairwise Completeness Score')
+#making the x-axis name
+plt.xlabel('Tool')
+#bc olive will kill me if you are tricked by the values of the y-axis - however not a good visual so went back but used it for comparison
+#plt.ylim(0,1)
+#making a legend to see what means what
+plt.legend()
+#making it for nice and readable; moves it to the side so doesn't overlap
+plt.xticks(rotation=45)
+#making it more pretty
+plt.tight_layout()
+#saving figure for future use in presentation
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/Zoomed_Pairwise_Completeness_Plot.png', dpi =300)
+#showing the plot
+plt.show()
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/944691b5-2205-4f10-8fd3-3267cda70a05)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
