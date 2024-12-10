@@ -143,7 +143,14 @@ However, if you did want to do this time step, this is the command I used:
 ```
 Which will then give you an output like this:
 
+LOG file:
+
 ![4](https://github.com/user-attachments/assets/0df7f188-b43d-49d3-a601-9ae18efe34d5)
+
+MSA file: 
+
+![Screenshot 2024-12-10 054257](https://github.com/user-attachments/assets/7f64da6d-cdb9-42ab-ac1e-74798a8067c2)
+
 ##### Memory and MSA Output
 To check the memory, time, and get the MSA file use the command:
 ```bash
@@ -173,6 +180,67 @@ This will give you an output that is similar to this!:
 Now we have completed using Halign3, and will move on to the next software tool!
 
 ### 3. MUSCLE
+MUSCLE's paper can be found here: [Paper](https://www.nature.com/articles/s41467-022-34630-w)
+
+MUSCLE's github can be found here: [Github](https://github.com/rcedgar/muscle)
+#### a) Installation
+To install MUSCLE5:
+
+1) Download the tar.gz file from this [website](https://github.com/rcedgar/muscle/releases).
+
+![Screenshot 2024-12-10 052531](https://github.com/user-attachments/assets/9ac493f4-ea55-4a9a-b48c-d88f04c55071)
+
+2) Manually move it from file explorer into your VSCode.
+3) You will have to extract the file:
+```bash
+tar -xvzf muscle-5.3.tar.gz
+```
+4) Go into the new muscle-5.3 directory:
+```bash
+cd muscle-5.3
+```
+5) Lastly, make sure MUSCLE is installed by seeing the version number:
+```bash
+muscle -version
+```
+It should give you output in the terminal like this:
+
+![Screenshot 2024-12-10 053652](https://github.com/user-attachments/assets/7417d9ac-3eec-4b0d-9eed-8f6cbb911a9b)
+
+#### b) Running MUSCLE
+To run MUSCLE, here is the bald command:
+```bash
+muscle –align Ebola.fasta -output Ebola_align_MUSCLE.fasta
+```
+##### Time and MSA Output
+(Can skip this step.)
+```bash
+(time muscle –align /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta - output /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_align_MUSCLE.fasta) 2> time_MUSCLE.log
+```
+Output would look like this:
+
+LOG file: 
+
+![Screenshot 2024-12-10 054026](https://github.com/user-attachments/assets/f4c0f615-f844-4a06-a636-1ceefb900530)
+
+MSA file:
+
+![image](https://github.com/user-attachments/assets/d1fc3f54-57c6-4a8b-9900-8b251e8322ea)
+##### Memory and MSA Output
+(Can go straight to this step instead of last step.)
+
+Put in this command: 
+```bash
+/usr/bin/time -v muscle --align /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta --output /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_align_MUSCLE.fasta 2>/home/aavalos4/Ebola_Virus_Bioi_500/MUSCLE_output/memory_MUSCLE.log
+```
+The output will give you:
+
+![Screenshot 2024-12-10 054544](https://github.com/user-attachments/assets/5d4db212-98b6-4c2f-8a6a-f1792ec51709)
+
+The memory used for MUSCLE to make a MSA: 148642164 = 145140.96 MB ≈ 141.74 GB at its peak.
+MUSCLE used about 141.74 GB to run and make a MSA.
+
+#### c) Alignment Checking
 
 
 
