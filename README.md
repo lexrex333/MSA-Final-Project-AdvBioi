@@ -130,7 +130,6 @@ halign -h
 #### Running Halign3
 Since we already have our FASTA file (Ebola.fasta), we don't need to download anything else.
 
-Halign3 only runs with one bald command 
 ##### Time and MSA Output
 (Just like MAFFT, you can skip this step - as the next step will cover this as well.)
 
