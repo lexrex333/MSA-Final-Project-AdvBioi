@@ -26,6 +26,7 @@ Now that we have our FASTA file ready to be used, we can create MSAs using the s
 
 ### 1. MAFFT
 MAFFT's paper can be found here: [Paper](https://academic.oup.com/nar/article/30/14/3059/2904316).
+
 MAFFT's github can be found here: [Github](https://github.com/GSLBiotech/mafft).
 #### a) Installation
 1) You will need to download the MAFFT version 7 from their [website](https://mafft.cbrc.jp/alignment/software/linuxportable.html). It should look like this:
@@ -50,7 +51,7 @@ There are many options you can choose from – depending on what works best for 
 
 1. FFT-NS-2 method: Fast, but less accurate 
 
-2. FFT-NS-i: Refinement for higher accuracy 
+2. FFT-NS-i: Slower, refinement for higher accuracy 
 
 3. G-INS-1: For sequences with global homology (add --globalpair)
 
@@ -90,6 +91,13 @@ The maximum resident set size is the maximum amount of memory that the run uses.
 
 In this case, 5335280 kbytes = 5208.87 MB ≈ 5.21 GB. MAFFT used 5.21 GB of memory to run and create a MSA.
 
+There you go! On to the next software tool :).
+
+### 2. Halign3
+Halign3's paper can be found: [Paper](https://academic.oup.com/mbe/article/39/8/msac166/6653123)
+
+Halign3's github can be found: [Github](https://github.com/malabz/HAlign-3)
+#### Installation
 
 
 
