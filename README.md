@@ -68,6 +68,14 @@ I added time to the command so that it would track how long it took to run and h
 
 This will output a MSA (Ebola_align_Mafft_global.aln) and a time log (time_Mafft_global.log).
 
+The MSA file should look like this:
+![Screenshot 2024-12-09 180422](https://github.com/user-attachments/assets/e3df7cbb-25cb-4115-954d-eff452dcd9c2)
+
+The time log will give file output like this:
+![Screenshot 2024-12-09 180658](https://github.com/user-attachments/assets/11642bf7-59ea-42ef-a529-0980826e9b01)
+
+
+
 
 
 
