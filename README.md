@@ -100,7 +100,7 @@ There you go! On to the next software tool :).
 Halign3's paper can be found: [Paper](https://academic.oup.com/mbe/article/39/8/msac166/6653123)
 
 Halign3's github can be found: [Github](https://github.com/malabz/HAlign-3)
-#### Installation
+#### a) Installation
 To install Halign3, follow these steps in your terminal on VSCode:
 
 1) Activate your conda environment:
@@ -127,7 +127,7 @@ conda install -c malab halign
 ```bash
 halign -h
 ```
-#### Running Halign3
+#### b) Running Halign3
 Since we already have our FASTA file (Ebola.fasta), we don't need to download anything else.
 
 ##### Time and MSA Output
@@ -155,7 +155,7 @@ This gave me:
 
 So the total memory used by Halign3 to create a similar MSA was 19428156 kbytes = 18972.81 MB ≈ 18.53 GB. 
 Halign3 used a maximum of 18.53 GB of memory to run and do this MSA for the Ebola Dataset.
-#### Alignment Check
+#### c) Alignment Check
 Halign3 also gives the option to check your alignment result to make sure that it worked correctly.
 
 To do this, you would first need to add this command to manipulate the FASTA file:
@@ -167,7 +167,7 @@ Then do this command:
 seqkit stat /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta /home/aavalos4/Ebola_Virus_Bioi_500/Halign3_output/Ebola_Halign3.fasta.aln
 ```
 This will give you an output that is similar to this!:
-```bash
+
 ![Screenshot 2024-12-10 050612](https://github.com/user-attachments/assets/429b4918-007c-4cd2-9af9-5920bba8df35)
 
 Now we have completed using Halign3, and will move on to the next software tool!
