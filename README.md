@@ -343,6 +343,136 @@ The memory used by ClustalOmega to make a MSA is 2368316 kbytes = 2312.62 MB ≈
 Now, we have finished making an MSA for all software tools with the Ebola dataset!!
 
 ## Step 3: Comparing the MSA Software Tools
+I first wanted to compare all 4 Software Tools with the results I got from when I ran them.
+### Memory Usage, Time, CPU Usage
+1) I made an excel spreadsheet with all the results that I had obtained from the LOG files.
+
+![Screenshot 2024-12-10 064315](https://github.com/user-attachments/assets/2da68b50-c606-4516-b1e9-fa4935952c20)
+
+2) I downloaded it as a CSV file.
+
+![Screenshot 2024-12-10 064359](https://github.com/user-attachments/assets/2b4140fe-1c73-41cb-baf0-0334df1aa5ab)
+
+3) I moved the CSV file, manually, into my VSCode.
+
+![Screenshot 2024-12-10 064437](https://github.com/user-attachments/assets/b593fe64-41e6-491e-b03e-6ee8c53769fe)
+
+It should look something like this:
+
+![Screenshot 2024-12-10 064530](https://github.com/user-attachments/assets/1a70ad20-b29d-46c3-8bfe-7ef093dc96fe)
+
+(I suggest adding quotation marks around all of the words like in the picture above, because it will give you an error in the code.) 
+
+4) I then made a python file in VSCode to make plots for each section of information:
+
+Using pandas and matplotlib, and grabbing information from our CSV file:
+```bash
+#import what we need to make the plots
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#reading the excel sheet (changed into CSV) 
+data = pd.read_csv('/home/aavalos4/Ebola_Virus_Bioi_500/Software_Running_Compare.csv') 
+#print(data.columns)
+```
+
+For Memory Usage:
+```bash
+#making a LINE PLOT for Memory Usage of each one
+
+#making figure size
+plt.figure(figsize=(8,5))
+#getting data we want to use and how we want to put it into plot
+plt.plot(data['Tool'], data['Memory Usage (GB)'], marker= 'o')
+#making a title
+plt.title('MEMORY USAGE')
+#making a y-axis name
+plt.ylabel('Memory Usage (GB)')
+#making a x-axis name
+plt.xlabel('Tool')
+#to put y-axis in numerical order
+plt.ylim(0.0,145.0) 
+#to put numbers above the dots
+for tool, memory in zip(data['Tool'], data['Memory Usage (GB)']):
+    plt.annotate(f'{memory:.2f}',(tool, memory), textcoords = "offset points", xytext=(0,5), ha='center')
+#so names don't look ugly and they aren't cut off
+plt.xticks(rotation=45)
+#making everything pretty with no overlaps
+plt.tight_layout()
+#saving figure for future use in presentation
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/Memory_Usage_Plot.png', dpi =300)
+#showing plot
+plt.show()
+```
+Memory Usage output should look like this:
+
+![image](https://github.com/user-attachments/assets/da789c96-a531-4289-9534-0c07c0ad961a)
+
+
+
+For amount of Time:
+```bash
+#making figure size
+plt.figure(figsize=(8,5))
+#getting data we want to use and how we want to put it into plot
+plt.plot(data['Tool'], data['Elapsed Time (Sec.)'], marker= 'o')
+#making a title
+plt.title('TIME')
+#making a y-axis name
+plt.ylabel('Time (Seconds)')
+#making a x-axis name
+plt.xlabel('Tool')
+#to put y-axis in numerical order
+plt.ylim(0,350)
+#to put numbers above the dots
+for tool, time in zip(data['Tool'], data['Elapsed Time (Sec.)']):
+    plt.annotate(f'{time}',(tool, time), textcoords = "offset points", xytext=(0,5), ha='center')
+#so names don't look ugly and they aren't cut off
+plt.xticks(rotation=45)
+#making everything pretty with no overlaps
+plt.tight_layout()
+#saving figure for future use in presentation
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/Time_Plot.png', dpi =300)
+#showing plot
+plt.show()
+```
+Time Output should look like this:
+
+![Screenshot 2024-12-10 065544](https://github.com/user-attachments/assets/3d93d199-29f8-48c3-8043-be5f20e1eec7)
+
+
+For CPU Usage:
+```bash
+#making a LINE PLOT for CPU %
+
+#making figure size
+plt.figure(figsize=(8,5))
+#getting data we want to use and how we want to put it into plot
+plt.plot(data['Tool'], data['CPU Usage(%)'], marker= 'o')
+#making a title
+plt.title('CPU USAGE')
+#making a y-axis name
+plt.ylabel('CPU Usage(%)')
+#making a x-axis name
+plt.xlabel('Tool')
+#to put y-axis in numerical order
+plt.ylim(0,460)
+#to put numbers above the dots
+for tool, cpu in zip(data['Tool'], data['CPU Usage(%)']):
+    plt.annotate(f'{cpu}',(tool, cpu), textcoords = "offset points", xytext=(0,5), ha='center')
+#so names don't look ugly and they aren't cut off
+plt.xticks(rotation=45)
+#making everything pretty with no overlaps
+plt.tight_layout()
+#saving figure for future use in presentation
+plt.savefig('/home/aavalos4/Ebola_Virus_Bioi_500/CPU_Usage_Plot.png', dpi =300)
+#showing plot
+plt.show()
+```
+CPU Usage Output should look like this:
+
+![Screenshot 2024-12-10 065454](https://github.com/user-attachments/assets/d578ee8a-c524-41b7-83a8-a096f2344861)
+
 
 
 
