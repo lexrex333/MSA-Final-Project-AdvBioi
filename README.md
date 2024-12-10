@@ -60,6 +60,7 @@ There are many options you can choose from – depending on what works best for 
 
 6. L-INS-i: For locally homologous sequences (add --localpair)
 
+##### Time and MSA Output
 Then to run MAFFT you use this command (I used global because it relates the most for Ebola virus sequences):
 ```bash
 (time mafft --globalpair --maxiterate 1000 Ebola.fasta) > Ebola_align_Mafft_global.aln 2> time_Mafft_global.log
@@ -69,10 +70,26 @@ I added time to the command so that it would track how long it took to run and h
 This will output a MSA (Ebola_align_Mafft_global.aln) and a time log (time_Mafft_global.log).
 
 The MSA file should look like this:
+
 ![Screenshot 2024-12-09 180422](https://github.com/user-attachments/assets/e3df7cbb-25cb-4115-954d-eff452dcd9c2)
 
 The time log will give file output like this:
+
 ![Screenshot 2024-12-09 180658](https://github.com/user-attachments/assets/11642bf7-59ea-42ef-a529-0980826e9b01)
+
+##### Memory and MSA Output
+I had completely forgot about memory usage, so I ran the command again, to get the memory usage (this does contain the amount of time it took to run as well, so you can skip the last command and just do this command):
+```bash
+/usr/bin/time -v mafft --globalpair --maxiterate 1000 /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta > Ebola_align_Mafft_global_1000.aln 2> /home/aavalos4/Ebola_Virus_Bioi_500/MAFFT_output/memory_Mafft_global_1000.log
+```
+This will output the same MSA alignment file, and another file that contains the memory usage and time: 
+
+![Screenshot 2024-12-09 181102](https://github.com/user-attachments/assets/03c9a3ed-4ca3-4cc9-aaaa-881d3e1c3cb3)
+
+The maximum resident set size is the maximum amount of memory that the run uses. 
+
+In this case, 5335280 kbytes = 5208.87 MB ≈ 5.21 GB. MAFFT used 5.21 GB of memory to run and create a MSA.
+
 
 
 
