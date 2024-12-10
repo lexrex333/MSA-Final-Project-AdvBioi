@@ -1,7 +1,7 @@
 # MSA-Final-Project-AdvBioi
 Welcome! This is a walkthrough of benchmarking 4 different multiple sequence alignment (MSA) tools using an Ebola dataset. These 4 MSA software tools include: MAFFT, Halign3, MUSCLE, and ClustalOmega. 
 
-5 Ebola species were used in this benchmarking project: [Bundibugyo](https://www.ncbi.nlm.nih.gov/nuccore/NC_014373?report=genbank), [Reston](https://www.ncbi.nlm.nih.gov/nuccore/NC_004161?report=genbank), [Sudan](https://www.ncbi.nlm.nih.gov/nuccore/NC_006432?report=genbank), [Tai](https://www.ncbi.nlm.nih.gov/nuccore/NC_014372?report=genbank), and [Zaire](https://www.ncbi.nlm.nih.gov/nuccore/NC_002549?report=genbank). The DNA sequences can be downloaded from NCBI Genbank as a FASTA file. The Ebola dataset was recieved from: [Ebola Paper](https://www.sciencedirect.com/science/article/pii/S2352914818300029). 
+5 Ebola species were used in this benchmarking project: [Bundibugyo](https://www.ncbi.nlm.nih.gov/nuccore/NC_014373?report=genbank), [Reston](https://www.ncbi.nlm.nih.gov/nuccore/NC_004161?report=genbank), [Sudan](https://www.ncbi.nlm.nih.gov/nuccore/NC_006432?report=genbank), [Tai](https://www.ncbi.nlm.nih.gov/nuccore/NC_014372?report=genbank), and [Zaire](https://www.ncbi.nlm.nih.gov/nuccore/NC_002549?report=genbank). The DNA sequences can be downloaded from NCBI Genbank as FASTA files. The Ebola dataset was recieved from: [Ebola Paper](https://www.sciencedirect.com/science/article/pii/S2352914818300029). 
 
 This was all done using VSCode and a remote explorer. 
 
@@ -241,6 +241,41 @@ The memory used for MUSCLE to make a MSA: 148642164 = 145140.96 MB ≈ 141.74 GB
 MUSCLE used about 141.74 GB to run and make a MSA.
 
 #### c) Alignment Checking
+MUSCLE allows you to check the alignment it just created. You can do this by adding "stratified" to the command - this will give you an ensemble FASTA with 16 alignments:
+```bash
+(time muscle -align /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta -stratified -output /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.efa) 2> time_MUSCLE_error.log
+```
+(I had added time, just to see how long it would take to run.)
+
+The time LOG file should look similar to this:
+
+![Screenshot 2024-12-10 055403](https://github.com/user-attachments/assets/1baa1769-c4de-4f2a-93c6-7769afc5081d)
+
+With the time at the bottom of it:
+
+![image](https://github.com/user-attachments/assets/398b45e2-0374-499c-8d7c-c7741bb200d7)
+
+Be aware: It will take time to run, so I suggest making a screen before running it.
+
+Then you will need to run this command to measure the dispersion:
+```bash
+(time muscle -disperse /home/aavalos4/Ebola_Virus_Bioi_500/MUSCLE_output/Ebola.efa) 2> time_MUSCLE_disperse.log
+```
+It will give an output like this:
+
+![Screenshot 2024-12-10 060050](https://github.com/user-attachments/assets/54d71dfc-866f-4099-93a7-c9a596ad9917)
+
+In my analyses, D_LP = 0.1223 and D_Cols = 0.2141. This means that the dispersion of local pairwise alignments and dispersion across alignment columns has a bit of variation. The closer to 0, the more similar the 16 MSAs are to each other. In this case, it seems to have alignment errors, or variation in their biological sequences, just by being over 0.05. In this benchmarking project, it won't affect results when comparing software tools, but it might be useful to check further into this when trying to make trees or when using these MSAs to do other analyses. 
+
+Now, we move on to the last software tool.
+
+### 4. ClustalOmega
+ClustalOmega's paper can be found here: [Paper](https://pubmed.ncbi.nlm.nih.gov/21988835/)
+ClustalOmega's github can be found here: [Github](https://github.com/GSLBiotech/clustal-omega)
+#### a) Installation
+
+
+
 
 
 
