@@ -344,7 +344,7 @@ Now, we have finished making an MSA for all software tools with the Ebola datase
 
 ## Step 3: Comparing the MSA Software Tools
 I first wanted to compare all 4 Software Tools with the results I got from when I ran them.
-### Memory Usage, Time, CPU Usage
+### A) Memory Usage, Time, CPU Usage
 1) I made an excel spreadsheet with all the results that I had obtained from the LOG files.
 
 ![Screenshot 2024-12-10 064315](https://github.com/user-attachments/assets/2da68b50-c606-4516-b1e9-fa4935952c20)
@@ -472,6 +472,13 @@ plt.show()
 CPU Usage Output should look like this:
 
 ![Screenshot 2024-12-10 065454](https://github.com/user-attachments/assets/d578ee8a-c524-41b7-83a8-a096f2344861)
+
+### B) AliStat - Measurement of MSA Completeness
+Alistat is a software tool that will allow us to analyze each of the MSA's created by each software tool, to see how "complete" the MSA is. It will check to see if there is any missing data, such as gaps or unknown nucleotides. 
+
+It creates equations using the idea that there are (m) sequences and (n) sites. If you are further interested in the equations and how it works, you can check out the [paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC7671350/) and the [github](https://github.com/thomaskf/AliStat). 
+
+#### Installing Alistat
 
 
 
