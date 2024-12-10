@@ -683,8 +683,10 @@ Output:
 
 ![image](https://github.com/user-attachments/assets/944691b5-2205-4f10-8fd3-3267cda70a05)
 
+According to the results, MAFFT would be the best to use for this Ebola Dataset, as it has the best score in Completeness for each factor, declared by Alistat.
 
-CONGRATULATIONS! You did it and you have now successfully compared 4 MSA Software Tools using and Ebola Dataset!
+
+CONGRATULATIONS! You did it and you have now successfully compared 4 MSA Software Tools using an Ebola Dataset!
 
 
 
