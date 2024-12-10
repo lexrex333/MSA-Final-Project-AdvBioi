@@ -97,9 +97,9 @@ MAFFT used 5.21 GB of memory to run and create a MSA.
 There you go! On to the next software tool :).
 
 ### 2. Halign3
-Halign3's paper can be found: [Paper](https://academic.oup.com/mbe/article/39/8/msac166/6653123)
+Halign3's paper can be found here: [Paper](https://academic.oup.com/mbe/article/39/8/msac166/6653123)
 
-Halign3's github can be found: [Github](https://github.com/malabz/HAlign-3)
+Halign3's github can be found here: [Github](https://github.com/malabz/HAlign-3)
 #### a) Installation
 To install Halign3, follow these steps in your terminal on VSCode:
 
@@ -270,9 +270,48 @@ In my analyses, D_LP = 0.1223 and D_Cols = 0.2141. This means that the dispersio
 Now, we move on to the last software tool.
 
 ### 4. ClustalOmega
-ClustalOmega's paper can be found here: [Paper](https://pubmed.ncbi.nlm.nih.gov/21988835/)
-ClustalOmega's github can be found here: [Github](https://github.com/GSLBiotech/clustal-omega)
+ClustalOmega's paper can be found here: [Paper](https://pubmed.ncbi.nlm.nih.gov/21988835/).
+
+ClustalOmega's github can be found here: [Github](https://github.com/GSLBiotech/clustal-omega).
 #### a) Installation
+To install ClustalOmega:
+
+1) Download from the [website](http://www.clustal.org/omega/).
+   
+![Screenshot 2024-12-10 061948](https://github.com/user-attachments/assets/8b4d9bc9-cb11-46f7-97f7-fa63c51e7011)
+
+2) Make sure it is in your downloads:
+
+![Screenshot 2024-12-10 062049](https://github.com/user-attachments/assets/edeea864-1028-4df9-ae68-881a6459d784)
+
+3) Insert into your VSCode:
+
+![Screenshot 2024-12-10 062126](https://github.com/user-attachments/assets/2bb49a16-083b-498c-9544-294c19735890)
+
+4) Go to the directory where it is located and then make the permissions executable using this command:
+```bash
+chmod +x clustalo-1.2.4-Ubuntu-x86_64
+```
+
+5) Make sure clustalo is working - it should have "rwxr" and clustalo in green:
+```bash
+ls -l clustalo-1.2.4-Ubuntu-x86_64
+```
+
+![Screenshot 2024-12-10 062401](https://github.com/user-attachments/assets/95f3579a-04ef-47e9-a7e5-2b6bc9993ab6)
+
+6) Check to see that it is working:
+```bash
+./clustalo-1.2.4-Ubuntu-x86_64 --help
+```
+It should give similar output to this:
+
+![Screenshot 2024-12-10 062527](https://github.com/user-attachments/assets/623975ec-560e-4a91-bf3d-6406790f948a)
+
+#### b) Running ClustalOmega
+
+
+
 
 
 
