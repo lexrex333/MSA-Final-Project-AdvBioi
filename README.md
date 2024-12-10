@@ -51,17 +51,19 @@ There are many options you can choose from – depending on what works best for 
 
 1. FFT-NS-2 method: Fast, but less accurate 
 
-2. FFT-NS-i: Slower, refinement for higher accuracy 
+2. FFT-NS-i: Slower, refinement for higher accuracy (add --maxiterate #)
 
 3. G-INS-1: For sequences with global homology (add --globalpair)
 
-4. G-INS-i: For globally homologous sequences (add --globalpair)
+4. G-INS-i: For globally homologous sequences (add --globalpair + --maxiterate #)
 
 5. L-INS-1: For sequences with local homology (add --localpair)
 
-6. L-INS-i: For locally homologous sequences (add --localpair)
+6. L-INS-i: For locally homologous sequences (add --localpair + --maxiterate #)
 
 ##### Time and MSA Output
+(FYI: This step is optional - the next step (memory) will do time as well - this is for result purposes on what I exactly did.)
+
 Then to run MAFFT you use this command (I used global because it relates the most for Ebola virus sequences):
 ```bash
 (time mafft --globalpair --maxiterate 1000 Ebola.fasta) > Ebola_align_Mafft_global.aln 2> time_Mafft_global.log
@@ -89,7 +91,8 @@ This will output the same MSA alignment file, and another file that contains the
 
 The maximum resident set size is the maximum amount of memory that the run uses. 
 
-In this case, 5335280 kbytes = 5208.87 MB ≈ 5.21 GB. MAFFT used 5.21 GB of memory to run and create a MSA.
+In this case, 5335280 kbytes = 5208.87 MB ≈ 5.21 GB. 
+MAFFT used 5.21 GB of memory to run and create a MSA.
 
 There you go! On to the next software tool :).
 
@@ -98,6 +101,84 @@ Halign3's paper can be found: [Paper](https://academic.oup.com/mbe/article/39/8/
 
 Halign3's github can be found: [Github](https://github.com/malabz/HAlign-3)
 #### Installation
+To install Halign3, follow these steps in your terminal on VSCode:
+
+1) Activate your conda environment:
+```bash
+conda activate base
+```
+2) Add channels to conda:
+```bash
+conda config --add channels conda-forge 
+
+conda config --add channels bioconda 
+
+conda config --add channels malab
+```
+3) Install the required package "openjdk=11" for running Halign3:
+```bash
+conda install -c conda-forge openjdk=11
+```
+4) Install Halign3:
+```bash
+conda install -c malab halign
+```
+5) Test Halign3 to make sure it's working:
+```bash
+halign -h
+```
+#### Running Halign3
+Since we already have our FASTA file (Ebola.fasta), we don't need to download anything else.
+
+Halign3 only runs with one bald command 
+##### Time and MSA Output
+(Just like MAFFT, you can skip this step - as the next step will cover this as well.)
+
+The bald command (the command with no pathways or additional usage) looks like this:
+```bash
+Halign –o Ebola_Halign3.fasta.aln -t 5 –c 6 Ebola.fasta
+```
+However, if you did want to do this time step, this is the command I used:
+```bash
+(time /home/aavalos4/miniconda3/bin/halign -o /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_Halign3.fasta.aln -t 5 -c 6 /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta) 2> time_Halign3.log
+```
+Which will then give you an output like this:
+
+![4](https://github.com/user-attachments/assets/0df7f188-b43d-49d3-a601-9ae18efe34d5)
+##### Memory and MSA Output
+To check the memory, time, and get the MSA file use the command:
+```bash
+/usr/bin/time -v /home/aavalos4/miniconda3/bin/halign -o /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_Halign3.fasta.aln -t 5 -c 6 /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta 2>/home/aavalos4/Ebola_Virus_Bioi_500/Halign3_output/memory_Halign3.log
+```
+This gave me:
+
+![Screenshot 2024-12-10 050018](https://github.com/user-attachments/assets/63fd5a54-258f-42de-ba0d-fb7bd354967b)
+
+So the total memory used by Halign3 to create a similar MSA was 19428156 kbytes = 18972.81 MB ≈ 18.53 GB. 
+Halign3 used a maximum of 18.53 GB of memory to run and do this MSA for the Ebola Dataset.
+#### Alignment Check
+Halign3 also gives the option to check your alignment result to make sure that it worked correctly.
+
+To do this, you would first need to add this command to manipulate the FASTA file:
+```bash
+conda install seqkit
+```
+Then do this command:
+```bash
+seqkit stat /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta /home/aavalos4/Ebola_Virus_Bioi_500/Halign3_output/Ebola_Halign3.fasta.aln
+```
+This will give you an output that is similar to this!:
+```bash
+![Screenshot 2024-12-10 050612](https://github.com/user-attachments/assets/429b4918-007c-4cd2-9af9-5920bba8df35)
+
+Now we have completed using Halign3, and will move on to the next software tool!
+
+### 3. MUSCLE
+
+
+
+
+
 
 
 
