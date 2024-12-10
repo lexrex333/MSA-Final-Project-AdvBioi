@@ -45,7 +45,29 @@ It will then give you a directory that looks like this:
 
 MAFFT is now ready to be used!
 
-#### b) Usage
+#### b) Running MAFFT
+There are many options you can choose from – depending on what works best for your data: 
+
+1. FFT-NS-2 method: Fast, but less accurate 
+
+2. FFT-NS-i: Refinement for higher accuracy 
+
+3. G-INS-1: For sequences with global homology (add --globalpair)
+
+4. G-INS-i: For globally homologous sequences (add --globalpair)
+
+5. L-INS-1: For sequences with local homology (add --localpair)
+
+6. L-INS-i: For locally homologous sequences (add --localpair)
+
+Then to run MAFFT you use this command (I used global because it relates the most for Ebola virus sequences):
+```bash
+(time mafft --globalpair --maxiterate 1000 Ebola.fasta) > Ebola_align_Mafft_global.aln 2> time_Mafft_global.log
+```
+I added time to the command so that it would track how long it took to run and had it put an additional file (time_Mafft_global.log) with the time in it. Maxiterate was also added to add more refinements to the alignment-the higher the number, the more refinement iterations (max number of 1000 refinements in this command).
+
+This will output a MSA (Ebola_align_Mafft_global.aln) and a time log (time_Mafft_global.log).
+
 
 
 
