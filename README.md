@@ -309,9 +309,40 @@ It should give similar output to this:
 ![Screenshot 2024-12-10 062527](https://github.com/user-attachments/assets/623975ec-560e-4a91-bf3d-6406790f948a)
 
 #### b) Running ClustalOmega
+To run ClustalOmega, here is the bald command:
+```bash
+./clustalo-1.2.4-Ubuntu-x86_64 -i Ebola.fasta -o Ebola_align_Clustalo.aln
+```
+Tip: Make sure to stay in the directory that you have clustalo in for it to run or add the pathway.
+##### Time and MSA Output
+(Can skip this step.)
+```bash
+(time ./clustalo-1.2.4-Ubuntu-x86_64 -i /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta -o /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_align_Clustalo.aln) 2> /home/aavalos4/Ebola_Virus_Bioi_500/time_Clustalo.log
+```
+Output should look like this:
 
+Time LOG file:
 
+![Screenshot 2024-12-10 063008](https://github.com/user-attachments/assets/60052d62-8da9-49c4-99e1-3fc4b8653b37)
 
+MSA file:
+
+![Screenshot 2024-12-10 063126](https://github.com/user-attachments/assets/3429bed9-f0f0-47e8-8693-30e0c123f80c)
+
+##### Memory and MSA Output
+(Can go straight to this step.)
+```bash
+/usr/bin/time -v /home/aavalos4/Ebola_Virus_Bioi_500/clustalo-1.2.4-Ubuntu-x86_64 -i /home/aavalos4/Ebola_Virus_Bioi_500/Ebola.fasta -o /home/aavalos4/Ebola_Virus_Bioi_500/Ebola_align_Clustalo.aln 2> /home/aavalos4/Ebola_Virus_Bioi_500/memory_Clustalo.log 
+```
+The output should give you something similar:
+
+![Screenshot 2024-12-10 063307](https://github.com/user-attachments/assets/070be00b-d5ec-45e9-be4c-e0fc9dd26b61)
+
+The memory used by ClustalOmega to make a MSA is 2368316 kbytes = 2312.62 MB ≈ 2.26 GB.
+
+Now, we have finished making an MSA for all software tools with the Ebola dataset!!
+
+## Step 3: Comparing the MSA Software Tools
 
 
 
